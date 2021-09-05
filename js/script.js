@@ -8,7 +8,7 @@ class Poem {
     this.poems = [];
     this.clearContainer();
     if (number < 0 || number >= 133) {
-      throw new Error("Enter Page Number between 1 to 133");
+      throw new Error("Enter Chapter Number between 1 to 133");
     }
     let urls = [];
     for (let i = 1; i < 11; i++) {
@@ -40,6 +40,13 @@ class Poem {
     const container = document.createElement("div");
     container.id = `poem-${index}`;
     container.className = "poem-box";
+    container.innerHTML = `<div class="index shadow" style="height:20px; background:rgba(180, 180, 180, 0.5);">
+    <span class="content shadow" ></span></div>
+    <div class="poem shadow">
+      <div>
+      </div>
+    </div>
+    <button class="btn shadow" style="width:100px"  ></button>`;
     document.querySelector("#poem-container").append(container);
   }
   clearContainer() {
@@ -111,14 +118,15 @@ function toggleLang() {
   langbtn.innerText = lang === "tam" ? "English" : "Tamil";
 }
 
-function search() {
+document.forms[0].onsubmit = () => {
   try {
     poem.getPage(pageNo.value - 1);
   } catch (e) {
     document.querySelector("#head").innerText = "";
     document.querySelector("#poem-container").innerText = e;
   }
-}
+  return false;
+};
 // poem.changeLang("eng");
 
 // let prop = ["chap_", "chapgrp_", "sect_"]

@@ -20,14 +20,15 @@
       <button class="btn head" id="lang" onclick="toggleLang()">English</button>
     </div>
     <div class="main">
-      <div class="search">
+      <span class="title">Chapter No</span>
+      <form id="search-form" class="search">
         <input type="text" id="pageNo" value="1" /><button
+          type="submit"
           class="search-btn"
-          onclick="search()"
         >
           <img class="search-img" src="image/search.svg" />
         </button>
-      </div>
+      </form>
       <div id="head"></div>
       <div id="poem-container"></div>
     </div>

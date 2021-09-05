@@ -152,3 +152,20 @@ input {
   /* background-color: blue; */
   padding: 0.5rem 1rem;
 }
+
+.shadow {
+  animation: fade 2s infinite;
+  /* background-color: aqua;   */
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
