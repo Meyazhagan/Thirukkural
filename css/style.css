@@ -121,3 +121,34 @@ body {
 .index {
   margin-left: 1rem;
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid grey;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+input {
+  display: inline-block;
+  height: 2rem;
+  width: 3rem;
+  border-radius: 0.5rem;
+  padding: 0rem 1rem;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+.search-btn {
+  height: 2rem;
+  border: none;
+  /* background-color: rgb(252, 144, 2); */
+}
+
+.search-img {
+  width: 1rem;
+  /* background-color: blue; */
+  padding: 0.5rem 1rem;
+}

@@ -8,7 +8,7 @@ class Poem {
     this.poems = [];
     this.clearContainer();
     if (number < 0 || number >= 133) {
-      throw new Error("Invalid Page");
+      throw new Error("Enter Page Number between 1 to 133");
     }
     let urls = [];
     for (let i = 1; i < 11; i++) {
@@ -21,7 +21,7 @@ class Poem {
   async fetchPage(urls, number) {
     const promises = await Promise.all(urls.map((url) => fetch(url)));
     let isDone = false;
-    promises.forEach((promise, index) => {
+    promises.forEach((promise) => {
       promise
         .json()
         .then((poem) => {
@@ -47,7 +47,6 @@ class Poem {
   }
   createCard(poem) {
     let index = poem.number % 10 || 10;
-    console.log(index);
     document.querySelector(`#poem-${index}`).innerHTML = `
     <div class="index"><span class="content">${poem.number}</span></div>
     <div class="poem">
@@ -99,7 +98,8 @@ class Poem {
 }
 
 const poem = new Poem();
-poem.getPage(1);
+const pageNo = document.querySelector("#pageNo");
+poem.getPage(pageNo.value - 1);
 
 function toggle(id) {
   document.querySelector(`#${id}`).classList.toggle("inactive");
@@ -109,6 +109,15 @@ function toggleLang() {
   let lang = poem.changeLang();
   let langbtn = document.querySelector(`#lang`);
   langbtn.innerText = lang === "tam" ? "English" : "Tamil";
+}
+
+function search() {
+  try {
+    poem.getPage(pageNo.value - 1);
+  } catch (e) {
+    document.querySelector("#head").innerText = "";
+    document.querySelector("#poem-container").innerText = e;
+  }
 }
 // poem.changeLang("eng");
 
